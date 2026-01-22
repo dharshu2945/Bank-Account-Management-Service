@@ -22,7 +22,7 @@ public class BankService {
                 return true;
             }
         }
-        throw new InvalidCustomerException("Error: Customer ID " + customerId + " not found.");
+        throw new InvalidCustomerException();
     }
 
     public Account getAccount(String accountId) {
@@ -36,18 +36,17 @@ public class BankService {
 
     public Transaction deposit(String accountId, double amount) throws TransactionException {
         if (amount <= 0) {
-            throw new TransactionException("Error: Deposit amount must be positive.");
+            throw new TransactionException();
         }
 
         Account targetAccount = getAccount(accountId);
         if (targetAccount == null) {
-            throw new TransactionException("Error: Account ID " + accountId + " not found for deposit.");
+            throw new TransactionException();
         }
 
         targetAccount.setBalance(targetAccount.getBalance() + amount);
         String newTid = "T" + String.format("%04d", transactionIdCounter++);
         
-        // Using a placeholder date for simplicity
         Transaction newTransaction = new Transaction(newTid, accountId, "Deposit", amount, "2026-01-22");
         transactions.add(newTransaction);
         return newTransaction;
@@ -55,22 +54,21 @@ public class BankService {
 
     public Transaction withdraw(String accountId, double amount) throws InsufficientBalanceException, TransactionException {
         if (amount <= 0) {
-            throw new TransactionException("Error: Withdrawal amount must be positive.");
+            throw new TransactionException();
         }
 
         Account targetAccount = getAccount(accountId);
         if (targetAccount == null) {
-            throw new TransactionException("Error: Account ID " + accountId + " not found for withdrawal.");
+            throw new TransactionException();
         }
 
         if (targetAccount.getBalance() < amount) {
-            throw new InsufficientBalanceException("Error: Insufficient balance for withdrawal of " + amount + ". Current balance: " + targetAccount.getBalance());
+            throw new InsufficientBalanceException();
         }
 
         targetAccount.setBalance(targetAccount.getBalance() - amount);
         String newTid = "T" + String.format("%04d", transactionIdCounter++);
 
-        // Using a placeholder date for simplicity
         Transaction newTransaction = new Transaction(newTid, accountId, "Withdrawal", amount, "2026-01-22");
         transactions.add(newTransaction);
         return newTransaction;
