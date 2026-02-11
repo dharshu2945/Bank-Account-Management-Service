@@ -19,11 +19,3 @@ Check account balance
 Update or close accounts
 
 This project uses Object-Oriented Programming (OOP) in Java to organize the code into different classes such as accounts and services. It also helps students understand how banking operations work, how data can be stored and processed, and how to build a menu-driven application that interacts with the user step-by-step.
-
-OUTPUT:
-
-<img width="302" height="175" alt="image" src="https://github.com/user-attachments/assets/181a8a9f-44a9-40c3-a829-bc15b3f97dcf" />
-
-<img width="482" height="225" alt="Screenshot 2026-02-09 121720" src="https://github.com/user-attachments/assets/783bbd78-1eeb-4bde-9050-6af7fe5a0d2c" />
-
-<img width="931" height="311" alt="Screenshot 2026-02-09 121842" src="https://github.com/user-attachments/assets/3a8a9068-c5dd-4d69-8640-c7f36660a270" />
